@@ -10,26 +10,6 @@
    - Удалить лишние пробелы между словами.
    - Вернуть очищенный текст.
 
-**Инструкции**:
-   - Для выполнения этого задания вы можете использовать базовые методы работы со строками и/или регулярные выражения.
-   - Убедитесь, что функция сохраняет знаки препинания, указывающие на конец предложения (например, точки, восклицательные и вопросительные знаки), но удаляет другие знаки препинания, такие как запятые, двоеточия и кавычки.
-
-**Пример**:
-```python
-input_texts = [
-    "Hello, World!\n   This is a test...",
-    "Python is fun!!! #coding",
-    "  Spaces should be    removed."
-]
-
-# Expected output:
-# [
-#     "hello world! this is a test.",
-#     "python is fun! coding",
-#     "spaces should be removed."
-# ]
-```
-
 ## Задание 2: Анализ частоты слов
 
 Напишите функцию `word_frequency`, которая берет очищенный текст (из задания 1) и возвращает словарь, где ключами являются слова, а значениями - их частота в тексте. Функция должна:
@@ -39,30 +19,6 @@ input_texts = [
 **Предопределённые стоп-слова**:
 ```python
 stop_words = ["and", "the", "is", "in", "it", "you", "that", "to", "of", "a", "with", "for", "on", "this", "at", "by", "an"]
-```
-
-**Инструкции**:
-   - Используйте словарь для хранения количества слов.
-   - Убедитесь, что функция не чувствительна к регистру (все слова должны считаться в нижнем регистре).
-   - Вы должны отфильтровать слова, которые появляются в списке `stop_words`.
-
-**Пример**:
-```python
-input_text = "hello world this is a test. python is fun coding. spaces should be removed."
-
-# Использование предопределенных стоп-слов
-
-# Ожидаемый результат:
-# {
-#     "hello": 1,
-#     "world": 1,
-#     "test": 1,
-#     "python": 1,
-#     "fun": 1,
-#     "coding": 1,
-#     "spaces": 1,
-#     "removed": 1
-# }
 ```
 
 ## Задача 3: Извлечение информации
@@ -77,36 +33,6 @@ input_text = "hello world this is a test. python is fun coding. spaces should be
 5. Цены
 6. Дополнительные данные по желанию пользователя
 
-**Инструкции**:
-- Функция должна принимать следующие keyword-only аргументы с шаблонами regex по умолчанию:
-  - `email_pattern` (default: `r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'`)
-  - `phone_pattern` (default: `r'\+\d[\d -]{8,12}\d'`)
-  - `date_pattern` (default: `r'\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b'`)
-  - `time_pattern` (default: `r'\b\d{1,2}:\d{2}\s*[APap][mM]?\b'`)
-  - `price_pattern` (по умолчанию: `r'\$\d+(?:\.\d{2})?'`)
-  - `**extra_patterns`: Дополнительные аргументы для пользовательских шаблонов.
-
-- Функция должна:
-  - Найти все совпадения в по каждому шаблону во всём тексте.
-  - Хранить совпадения в словаре результатов под соответствующим типом.
-  - Возвращать словарь со всеми найденными совпадениями.
-
-**Пример**:
-```python
-input_text = "Contact me at john.doe@example.com or call +123 456 7890. Meeting on 10/05/2024 at 3:00 PM. The price is $19.99. Birthday on 15-08-2023."
-
-# Custom patterns can be provided as needed.
-
-# Expected output:
-# {
-#     "emails": ["john.doe@example.com"],
-#     "phone_numbers": ["+123 456 7890"],
-#     "dates": ["10/05/2024", "15-08-2023"],
-#     "times": ["3:00 PM"],
-#     "prices": ["$19.99"]
-# }
-```
-
 ## Задача 4: Анализ настроения
 
 Напишите функцию `analyze_sentiment`, которая берет очищенный текст (из задания 1) и анализирует его настроение на основе заранее определенных положительных и отрицательных слов. Функция должна возвращать оценку настроения текста.
@@ -119,32 +45,6 @@ positive_words = ["good", "great", "happy", "joy", "excellent", "fantastic", "lo
 - **Негативные слова** (по умолчанию):
 ```python
 negative_words = ["bad", "sad", "hate", "terrible", "awful", "poor", "worst"]
-```
-
-**Инструкции**:
-- Функция должна принимать следующие keyword-аргументы:
-  - `positive_words`: Список положительных слов (по умолчанию, как показано выше).
-  - `negative_words`: Список отрицательных слов (по умолчанию, как показано выше).
-
-- Функция должна:
-  - Подсчитать количество положительных и отрицательных слов в каждой записи текста.
-  - Рассчитать балл настроения для каждой записи:
-    - Sentiment Score = (Number of Positive Words - Number of Negative Words)
-  - Вернуть оценку настроения текста.
-
-**Пример**:
-```python
-example_texts = [
-    "I love this product! It's fantastic and makes me very happy.",
-    "This is the worst experience I've ever had.",
-    "Great service but the food was bad."
-]
-
-example_results = {
-    "I love this product! It's fantastic and makes me very happy.": 3,
-    "This is the worst experience I've ever had.": -1,
-    "Great service but the food was bad.": 0
-}
 ```
 
 ## Задача 5: Обобщение текста
@@ -163,20 +63,6 @@ example_results = {
   - Используйте рекурсивный подход для динамического отбора предложений с наивысшим рейтингом, удаляя каждое выбранное предложение и заново ранжируя оставшиеся, пока не будет достигнут желаемый коэффициент сжатия.
   - Верните обобщенный текст в виде строки, состоящей из выбранных предложений.
 
-**Пример**:
-```python
-input_text = (
-    "I love this product! It's fantastic and makes me very happy. "
-    "This is the worst experience I've ever had. "
-    "Great service but the food was bad. "
-    "The atmosphere was amazing, and the location is perfect."
-)
-
-# Assuming a compression ratio of 0.6
-# Expected output (may vary based on ranking criteria):
-# "I love this product! It's fantastic and makes me very happy. The atmosphere was amazing, and the location is perfect."
-```
-
 ## Задание 6: Визуализация частоты слов
 
 Напишите функцию `visualize_word_frequency`, которая берет словарь частот слов (полученный в задании 2) и визуализирует частоты в текстовом формате.
@@ -187,22 +73,6 @@ input_text = (
 - Длину каждой полосы можно масштабировать в зависимости от максимальной частоты, чтобы обеспечить читабельность.
 - Функция должна иметь параметр `max_threshold`, чтобы ограничить количество строк в выводе (по умолчанию 20).
 - Вывод должен быть отсортирован от наиболее до наименее часто используемых слов
-
-**Пример**:
-```python
-word_frequencies = {
-    "hello": 5,
-    "world": 3,
-    "python": 4,
-    "coding": 2
-}
-
-# Ожидаемый вывод:
-# hello:  *****
-# python: ****
-# world:  ***
-# coding: **
-```
 
 ## Задание 7: Функции высшего порядка для анализа текста
 
@@ -216,28 +86,6 @@ word_frequencies = {
 - Функция должна:
   - Перебирать список функций анализа, применяя каждую из них к текстовой записи и сохраняя результат в словаре под описательным ключом (например, именем функции).
   - Возвращать словарь, содержащий результаты всех примененных функций анализа.
-
-**Пример**:
-```python
-def word_frequency(text):
-    # Implementation of word frequency analysis
-    pass
-
-def analyze_sentiment(text):
-    # Implementation of sentiment analysis
-    pass
-
-input_text = "I love this product! It's fantastic and makes me very happy."
-
-# Using the apply_analysis function
-results = apply_analysis(input_text, [word_frequency, analyze_sentiment])
-
-# Expected output might look like:
-# {
-#     "word_frequency": {"love": 1, "product": 1, "fantastic": 1, "happy": 1},
-#     "sentiment": 4  # Assuming a sentiment score based on the defined method
-# }
-```
 
 ## Задача 8: Обернуть всё в класс
 
@@ -259,42 +107,6 @@ results = apply_analysis(input_text, [word_frequency, analyze_sentiment])
 - Каждый метод должен вызываться независимо, и класс должен позволять настраивать поведение там, где это возможно (например, передавать пользовательские списки слов или шаблоны regex).
 - Убедитесь, что методы хорошо документированы и что класс может быть легко инстанцирован с вводом текста для анализа.
 
-**Пример**:
-```python
-class TextAnalyzer:
-    def __init__(self, text: str):
-        self.original_text = text
-        self.cleaned_text = self.preprocess_text(text)
-
-    def word_frequency(self) -> dict:
-        # Implementation of word frequency analysis
-        pass
-
-    def extract_information(self, **patterns) -> dict:
-        # Implementation of information extraction
-        pass
-
-    def analyze_sentiment(self, positive_words=None, negative_words=None) -> int:
-        # Implementation of sentiment analysis
-        pass
-
-    def summarize_text(self, compression_ratio: float) -> str:
-        # Implementation of text summarization
-        pass
-
-    def visualize_word_frequency(self) -> None:
-        # Implementation of word frequency visualization
-        pass
-
-    def apply_analysis(self, analysis_functions: list) -> dict:
-        # Implementation of applying analysis functions
-        pass
-
-# Sample usage
-analyzer = TextAnalyzer("Some example text here.")
-analyzer.visualize_word_frequency()
-```
-
 ## Задача 9: Анализ текста
 
 Проведите анализ предложенного вам в соответствии с вариантом текста. Воспользуйтесь разработанными инструментами, чтобы:
@@ -303,24 +115,3 @@ analyzer.visualize_word_frequency()
 - Узнать наиболее часто встречающиеся слова
 - Оценить настроение текста
 - Определить основную информацию текста
-
-Представьте результаты ваших оценок и сделайте вывод о содержании текста.
-
----
-
-# Требования к оформлению
-
-Домашнее задание выполняется в тетради `hw1.ipynb` в формате отчёта.
-
-Тетрадь должна содержать описания заданий и предлагаемых решений, а также выводы о проделанной работе.
-
-Тетрадь должна быть оформлена так, чтобы из неё можно было получить отчёт, соответствующий требованиям университета, добавив к ней титульный лист.
-
----
-
-# Тестирование
-
-Для того, чтобы локально протестировать ваши решения, необходимо:
-
-1. Установить `import_ipynb` командой `pip install import-ipynb`
-2. Запустить тесты командой `pytest`
