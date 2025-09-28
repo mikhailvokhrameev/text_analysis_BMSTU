@@ -3,7 +3,7 @@
 
 # Инструмент для анализа текста. Classical NLP
 
-Данный репозиторий содержит выполненную лабораторную работу по предмету "Языки программирования для анализа данных" в МГТУ им. Н.Э. Баумана.
+Данный репозиторий содержит выполненное домашнее задание по предмету "Языки программирования для анализа данных" в МГТУ им. Н.Э. Баумана.
 
 ---
 
@@ -27,7 +27,7 @@
 
 # Text analysis tool. Classical NLP
 
-This repository contains a completed lab assignment for the course “Programming Languages for Data Analysis” at BMSTU.
+This repository contains a completed homework for the course “Programming Languages for Data Analysis” at BMSTU.
 
 ---
 ### Why did I do this project?
